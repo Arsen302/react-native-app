@@ -1,9 +1,9 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { TouchableOpacity, StyleSheet, Text, View, TextInput, Button, SafeAreaView, FlatList } from 'react-native';
+import { TouchableOpacity, StyleSheet, Text, View, TextInput, Button, SafeAreaView, ScrollView } from 'react-native';
 import { Author } from "./Components/Author";
 import { Search } from "./Components/Search";
-// import { PostsScreen } from "./Screens/PostsScreen";
+import { PostsScreen } from "./Screens/PostsScreen";
 
 export const MainScreen = () => {
     const AUTHORS_URL = `https://jsonplaceholder.typicode.com/users`
@@ -17,10 +17,10 @@ export const MainScreen = () => {
                 console.log(res)
                 setAuthors(res)
             })
-        // .catch((err) => {
-        //     console.log(err)
-        //     alert('Ohhh..., maybe something went wrong')
-        // })
+            .catch((err) => {
+                console.log(err)
+                alert('Ohhh..., maybe something went wrong')
+            })
     }, [])
 
     return (
@@ -29,11 +29,10 @@ export const MainScreen = () => {
                 <StatusBar style="auto" />
                 <Text>Authors</Text>
                 <Search />
-                {authors.map(author =>
-                    <FlatList key={author.id}>
-                        <Author author={author} />
-                    </FlatList>)}
-                {/* Здесь нам нужен переход на другой экран <PostsScreen /> */}
+                <ScrollView>
+                    {authors.map(author => <Author author={author} />)}
+                </ScrollView>
+                <PostsScreen />
             </View>
         </SafeAreaView>
     );

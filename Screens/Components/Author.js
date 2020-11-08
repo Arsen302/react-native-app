@@ -14,12 +14,11 @@ export const Author = ({ author }) => {
                     <Text style={styles.userLogin}>{author.email}</Text>
                 </View>
                 <View>
-                    <Text>5 posts</Text>
+                    <Text>{author.posts}</Text>
                 </View>
                 <StatusBar style="auto" />
             </View >
         </TouchableOpacity>
-
     );
 }
 

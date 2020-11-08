@@ -16,10 +16,10 @@ export const PostsScreen = () => {
                 console.log(res)
                 setPosts(res)
             })
-        // .catch((err) => {
-        //     console.log(err)
-        //     alert('Ohhh..., maybe something went wrong')
-        // })
+            .catch((err) => {
+                console.log(err)
+                alert('Ohhh..., maybe something went wrong')
+            })
     }, [])
 
     return (
